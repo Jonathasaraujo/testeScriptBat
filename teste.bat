@@ -1,26 +1,26 @@
 @ECHO OFF
-SET SvcName=FontCache
+SET SvcName=teste
 
-:scxth0081cld
+:server1
 SC QUERYEX "%SvcName%" | FIND "STATE" | FIND /v "RUNNING" > NUL && (
-	ECHO %SvcName% ja esta parado no servidor scxth0081cld 
-	goto scxth0082cld
+	ECHO %SvcName% ja esta parado no servidor server1
+	goto server2
 )
-sc \\scxth0081cld stop %SvcName%
+sc \\server stop %SvcName%
 
-:scxth0082cld
+:server2
 SC QUERYEX "%SvcName%" | FIND "STATE" | FIND /v "RUNNING" > NUL && (
-	ECHO %SvcName% ja esta parado no servidor scxth0082cld
-	goto scxth0083cld
-)
-sc \\scxth0082cld stop %SvcName%
+	ECHO %SvcName% ja esta parado no servidor server2
+	goto server3
+)ss
+sc \\server2 stop %SvcName%
 
-:scxth0083cld
+:server3
 SC QUERYEX "%SvcName%" | FIND "STATE" | FIND /v "RUNNING" > NUL && (
-	ECHO %SvcName% ja esta parado no servidor scxth0083cld
+	ECHO %SvcName% ja esta parado no servidor server3
 	goto fim
 )
-sc \\scxth0083cld stop %SvcName%
+sc \\server3 stop %SvcName%
 
 :fim
 
